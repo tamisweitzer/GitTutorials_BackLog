@@ -1,3 +1,9 @@
 
 Added text since last commit:
 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolores aperiam voluptatum voluptates vero culpa similique sequi nemo asperiores aut ab possimus at cumque, autem maxime omnis expedita provident quidem.
+
+Recommended format for git commit message
+
+Abstract of the contents changed by commits
+
+Reason for changes
