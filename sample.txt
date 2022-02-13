@@ -6,4 +6,5 @@ Recommended format for git commit message
 
 Abstract of the contents changed by commits
 
-Reason for changes
+Reason for changes. 
+
