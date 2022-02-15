@@ -161,11 +161,15 @@ It is a common practice to create a new branch for each task (i.e., a branch for
 
 To create a branch, 
 
-```git 
+```bash
 git branch branchname 
 ```
 
 Switch between branches by using the `git checkout` command. Switching between branches is like switches between different work spaces. 
+
+```bash 
+git checkout branchname
+```
 
 
 ## Git HEAD
@@ -191,3 +195,147 @@ However, if Git finds a conflict between the files from the newly switched branc
 You can think of stash as a drawer to store uncommitted changes temporarily. Stashing allows you to put aside the “dirty” changes in your working tree and continue working on other things in a different branch on a clean slate.
 
 Uncommitted changes that are stored in the stash can be taken out and applied to the original branch and other branches as well.
+
+## Remote Branches 
+
+The remote branch is referred to as `origin/master`.
+Your local branch is referred to as just `origin`.
+
+### Fast-forward Commit
+
+When the remote copy, origin/master, is ahead of your local repo, and you have not yet made any changes to your local repo that are not yet in the cloud, then when you run `git pull` it will do a fast-forward merge into your repo. 
+In other words, your repo will "fast-forward" to get caught up with the remote repo's changes. 
+
+### Pull
+
+However, if you have local changes that you have not pushed up yet, and you need to pull down changes, Git will try to merge the remote changes into your local repo. 
+
+
+
+**Git will always attempt a merge when you use `git pull`.Git must merge and commit before a pull if local branch is different from the remote branch.**
+
+If there are any conflicts between the two branches, you will need to resolve those manually.
+
+Use `git pull` to pull down any changes from the remote repo.
+
+## Git Fetch 
+
+Similar to `git pull`, the `git fetch` command will pull down any changes on the remote repo, but will not attempt to merge them into your local repo. 
+
+Once changes are fetched, you can merge them in by merging FETCH_HEAD or but using `git pull`.
+
+## Push Branch to Remote 
+
+All of your commits are available to you until you push your local branch to the remote repository. That is, you can work on your own local branch at your own pace without affecting other members of the team.
+
+When you push your local branch to remote, Git will do a fast-forward merge to the destination repository.
+
+However, if the push results in a non-fast-forward merge, Git will decline your push to prevent you from overwriting previous commits. In that case, you have to pull the latest remote changes and push again.
+
+## Branching Workflows
+
+A workflow consists of five types of branches:
+- master 
+- feature, or topic, branch
+- release branch
+- hotfix branch
+- develop branch
+
+### Master Branch
+
+The master, or main, branch is created automatically when you create a repo. 
+
+All commits go under the master branch unless you specifically switch over to a different branch first. 
+
+Codebase residing in the master branch is considered to be production-ready. When it is ready for a specific release, the latest commit will be given a release tag.
+
+### Feature Branch
+
+When you start working on a new feature/bug fix, you should create a feature/topic branch. A feature/topic branch is normally created off a develop/integration branch. This feature/topic branch can reside in your local machine throughout the entire development lifecycle of the feature.
+
+You will push this branch to the remote repository whenever you are ready to merge the change set with the develop/integration branch.
+
+
+### Release Branch
+
+When you roll out a new release, you create a release branch. A release branch helps you to ensure that the new features are running correctly.
+
+
+### Hotfix Branch
+
+When you need to add an important fix to your production codebase quickly, you can create a Hotfix branch off the master branch.
+
+
+
+### Develop Branch
+
+...
+
+## Rebase 
+
+The `git rebase` command is an alternate to `git merge`. When using rebase, the branches are merged together and the commits  from the secondary branch are appended to the end of the master branch. 
+
+A rebase does not move the position of the master. In any case, you will be able to do a fast-forward or a clean merge from bugfix to master after rebasing.
+
+## Tags 
+
+Tags are often used to indicate release versions. There are two types of tags:
+- lightweight tag
+- annotated tag 
+
+A lightweight tag is similar to a branch that does not change. It just points directly to a specific commit in the history. Lightweight tags are mainly used temporarily in your local workspace.
+
+An annotated tag is checksummed and often used when you are planning to mark an important commit. You can add comments, a signature, the date, plus the tagger's name and e-mail.
+
+## Pull Requests
+
+A pull request notifies other development team members of changes made in your local repository. Pull requests provide the following functions:
+
+- Notify team members when a review or merge of work is needed
+- Display changes made to source code in an easy-to-understand manner
+- Provide a platform for communicating about source code
+
+
+### Development process with pull requests
+Here is a simple development workflow with pull requests your team can follow:
+
+- [Developer] Clone or pull the source of the work target.
+- [Developer] Create a branch for the work.
+- [Developer] Perform development work such as adding and modifying functions.
+- [Developer] Push after the task is completed.
+- [Developer] Create a pull request.
+- [Review / Merge Personnel] Check the changes from the notified pull request and review.
+- [Review / Merge Personnel] Judge the work and send a feedback to the developer if necessary.
+- [Review / Merge Personnel] Merge if there is no problem as a result of the review.
+- [Review / Merge Personnel] Close if the pull request itself becomes unnecessary as a result of the review.
+
+
+
+# Work with Git 
+[Work with Git](https://backlog.com/git-tutorial/getting-started/install-git/)
+
+
+Set your global username and email. 
+
+```bash
+git config --global user.name "My Name"
+git config --global user.email "me@mail.com"
+```
+
+Set Git output color.
+
+```bash
+git config --global color.ui auto
+```
+
+Create aliases for git commands.
+This creates an alias of `co` to stand for `checkout`.
+
+```bash
+git config --global alias.co checkout
+```
+
+
+
+
+
