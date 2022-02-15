@@ -336,6 +336,27 @@ git config --global alias.co checkout
 ```
 
 
+## Remote Repos
+
+You can create an alias for your remote repo so that you don't need to type out it's full name every time you push to it.
+
+By default, the remote repo will have an alias of origin. 
+
+
+If you're starting with an empty repo on Github, and you're not using the clone command, you need to set the path of the remote repo.
+
+```bash
+git remote add origin path-to-your-github-repo.git
+```
+
+To push to a remote repo:
+
+```bash
+git push -u origin master
+```
+Think of it as push *to* origin *from* the master branch. 
+
+
 
 
 
